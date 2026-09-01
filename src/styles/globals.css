@@ -184,24 +184,82 @@ section { padding: 70px 0; }
 }
 .section-desc { color: var(--ink-dim); font-size: 15px; text-wrap: balance; }
 
-/* ---- gallery ---- */
-.gallery {
-  display: flex; gap: 18px; overflow-x: auto; padding: 6px 24px 18px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+/* ---- phone showcase (auto-scrolling app reel) ---- */
+.showcase { overflow: hidden; }
+.showcase-stage {
+  position: relative;
+  display: flex; justify-content: center;
+  padding: 12px 24px 8px;
 }
-.gallery::-webkit-scrollbar { height: 6px; }
-.gallery::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
-.shot {
-  flex: 0 0 auto; scroll-snap-align: center;
-  width: 196px;
-  border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
-  background: var(--surface);
+.showcase-glow {
+  position: absolute; top: 50%; left: 50%;
+  width: 340px; height: 340px; border-radius: 50%;
+  filter: blur(120px); opacity: 0.5; pointer-events: none; z-index: 0;
 }
-.shot img { width: 100%; display: block; height: auto; }
-.shot-cap {
-  font-family: var(--font-mono); font-size: 11px; color: var(--ink-dim);
-  padding: 10px 12px; letter-spacing: 0.03em; text-transform: uppercase; border-top: 1px solid var(--line);
+.showcase-glow--violet { background: var(--violet); transform: translate(-118%, -55%); }
+.showcase-glow--cyan { background: var(--cyan); transform: translate(18%, -20%); opacity: 0.35; }
+
+.phone {
+  --phone-w: clamp(238px, 74vw, 296px);
+  position: relative; z-index: 1;
+  width: var(--phone-w);
+  padding: 10px;
+  background: #0c0c0f;
+  border: 1px solid var(--line);
+  border-radius: 46px;
+  box-shadow:
+    0 2px 2px rgba(255, 255, 255, 0.06) inset,
+    0 30px 70px -20px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+.phone-notch {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  width: 38%; height: 22px; background: #0c0c0f; border-radius: 0 0 14px 14px; z-index: 3;
+}
+.phone-screen {
+  position: relative;
+  aspect-ratio: 1179 / 2556;
+  border-radius: 38px; overflow: hidden;
+  background: var(--ground);
+}
+.reel {
+  display: flex; flex-direction: column;
+  animation: reel-scroll 30s linear infinite;
+  will-change: transform;
+}
+.phone:hover .reel { animation-play-state: paused; }
+.reel-item {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 1179 / 2556;
+}
+.reel-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@keyframes reel-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+/* Soft cyan sweep evoking the scan, riding down the screen. */
+.phone-scanline {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(34, 211, 238, 0.14) 48%,
+    rgba(34, 211, 238, 0.28) 50%,
+    rgba(34, 211, 238, 0.14) 52%,
+    transparent 100%
+  );
+  background-size: 100% 42%;
+  background-repeat: no-repeat;
+  animation: scan-sweep 30s linear infinite;
+}
+@keyframes scan-sweep {
+  0% { background-position: 0 -60%; }
+  100% { background-position: 0 160%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel { animation: none; }
+  .phone-scanline { animation: none; opacity: 0; }
 }
 
 /* ---- core loop ---- */

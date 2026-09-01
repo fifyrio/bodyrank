@@ -1,6 +1,6 @@
 import { Topbar } from "@/components/Topbar";
 import { Hero } from "@/components/Hero";
-import { Gallery } from "@/components/Gallery";
+import { PhoneShowcase } from "@/components/PhoneShowcase";
 import { CoreLoop } from "@/components/CoreLoop";
 import { Ladder } from "@/components/Ladder";
 import { Metrics } from "@/components/Metrics";
@@ -12,7 +12,7 @@ export default function Home() {
       <Topbar />
       <main>
         <Hero />
-        <Gallery />
+        <PhoneShowcase />
         <CoreLoop />
         <Ladder />
         <Metrics />

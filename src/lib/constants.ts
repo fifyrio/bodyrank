@@ -27,18 +27,21 @@ export const METRIC_LABELS: string[] = [
   "MUSCLE MASS",
 ];
 
-// Gallery screenshots — keys map to files in /public/shots and to shot copy in i18n.
-// Intrinsic dimensions preserve each phone screenshot's aspect ratio.
-export interface Shot {
-  key: string;
-  width: number;
-  height: number;
+// Full-screen app captures shown in the auto-scrolling phone showcase.
+// Files live in /public/app; aspect ratio is a real iPhone screen (1179 x 2556).
+export interface AppScreen {
+  src: string;
+  alt: string;
 }
 
-export const SHOTS: Shot[] = [
-  { key: "welcome", width: 360, height: 815 },
-  { key: "rankintro", width: 360, height: 815 },
-  { key: "ranktab", width: 360, height: 960 },
-  { key: "muscle", width: 360, height: 945 },
-  { key: "future", width: 360, height: 815 },
+export const SCREEN_ASPECT = 1179 / 2556;
+
+// Ordered as a short product tour.
+export const APP_SCREENS: AppScreen[] = [
+  { src: "/app/screen-1.webp", alt: "Get your body score" },
+  { src: "/app/screen-3.webp", alt: "Climb the global ranks" },
+  { src: "/app/screen-6.webp", alt: "See every muscle worked" },
+  { src: "/app/screen-2.webp", alt: "AI finds your weak links" },
+  { src: "/app/screen-4.webp", alt: "A plan that adapts" },
+  { src: "/app/screen-5.webp", alt: "Meet your future self" },
 ];

@@ -61,3 +61,22 @@ hero and footer forms share the same count via `WaitlistContext`.
 > The JSON-file store is intentionally simple for a single-instance deployment.
 > Swap `src/app/api/waitlist/route.ts` for a database or an email provider (e.g.
 > a Resend/ConvertKit list) before scaling.
+
+## TikTok referral tracking
+
+Share **`https://<your-domain>/tiktok`** in your TikTok bio / videos. Every visit:
+
+1. increments a click counter (total + per-day, UTC) in `data/tiktok.json`
+2. `302`-redirects the visitor to the homepage (`/?ref=tiktok`)
+
+Read the numbers any time:
+
+```bash
+curl https://<your-domain>/api/tiktok
+# { "count": 128, "byDay": { "2026-09-01": 40, "2026-09-02": 88 } }
+```
+
+The redirect uses `302` (uncached) so repeat visits are all counted, and a tracking
+write failure never blocks the redirect. Counter storage is generic
+(`src/lib/counterStore.ts`) — add more campaign links (e.g. `/instagram`) by
+reusing `incrementCounter("<name>")`.
