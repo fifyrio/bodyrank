@@ -1,7 +1,7 @@
 # BodyRank — Official Site
 
 The official waitlist / landing page for **BodyRank**, the AI body scan that rates
-your physique across 7 metrics, ranks you Iron → Symmetric, and builds a training
+your physique across 7 metrics, ranks you on the six-tier BodyRank ladder (Iron → Aesthetic), and builds a training
 plan around what it finds.
 
 Rebuilt in **Next.js (App Router) + TypeScript** from the original single-file
@@ -27,6 +27,32 @@ pnpm dev      # http://localhost:3000
 ```bash
 pnpm build && pnpm start   # production
 ```
+
+## Domain & SEO
+
+Production domain: **[bodyrank.net](https://bodyrank.net)**.
+
+The canonical URL lives in `src/lib/site.ts` and feeds `metadataBase`, Open Graph /
+Twitter tags, `sitemap.xml`, and `robots.txt`. Override per-environment (preview /
+staging) with `NEXT_PUBLIC_SITE_URL`:
+
+```bash
+NEXT_PUBLIC_SITE_URL="https://<preview-url>" pnpm build
+```
+
+## Strength calculator (`/how-strong-am-i`)
+
+SEO tool page targeting "how strong am I": bench / squat / deadlift → strength
+percentile for sex, age and bodyweight, mapped onto the BodyRank ladder (Iron → Aesthetic),
+followed by an app CTA, a standards table and an FAQ (with `FAQPage` JSON-LD).
+
+- Model: `src/lib/strength/model.ts` — pure functions. Epley 1RM estimate, age
+  coefficients, allometric (bodyweight^⅔) scaling, log-normal interpolation through
+  lifter strength standards. Tests: `pnpm test` (Node's built-in runner, no deps).
+- Copy: `src/lib/strength/i18n.ts` (EN / ES). FAQ numbers are derived from the
+  model — re-check them if you change `STANDARDS`.
+- App CTA: shows the waitlist until `NEXT_PUBLIC_APP_STORE_URL` is set, then an
+  App Store button.
 
 ## Project structure
 
@@ -64,7 +90,7 @@ hero and footer forms share the same count via `WaitlistContext`.
 
 ## TikTok referral tracking
 
-Share **`https://<your-domain>/tiktok`** in your TikTok bio / videos. Every visit:
+Share **`https://bodyrank.net/tiktok`** in your TikTok bio / videos. Every visit:
 
 1. increments a click counter (total + per-day, UTC) in `data/tiktok.json`
 2. `302`-redirects the visitor to the homepage (`/?ref=tiktok`)
@@ -72,7 +98,7 @@ Share **`https://<your-domain>/tiktok`** in your TikTok bio / videos. Every visi
 Read the numbers any time:
 
 ```bash
-curl https://<your-domain>/api/tiktok
+curl https://bodyrank.net/api/tiktok
 # { "count": 128, "byDay": { "2026-09-01": 40, "2026-09-02": 88 } }
 ```
 

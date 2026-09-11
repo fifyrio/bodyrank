@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { Lang } from "@/lib/i18n";
+import { STRENGTH_CALCULATOR_PATH } from "@/lib/site";
 import { useLanguage } from "@/context/LanguageContext";
 
 const LANGS: { code: Lang; label: string }[] = [
@@ -10,27 +13,40 @@ const LANGS: { code: Lang; label: string }[] = [
 ];
 
 export function Topbar() {
-  const { lang, setLang } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
+  const pathname = usePathname();
 
   return (
-    <div className="topbar">
-      <div className="brand">
-        <Image src="/logo.webp" alt="BodyRank logo" width={28} height={28} priority />
-        BODYRANK
-      </div>
-      <div className="langtoggle" role="group" aria-label="Language">
-        {LANGS.map(({ code, label }) => (
-          <button
-            key={code}
-            type="button"
-            className={code === lang ? "active" : ""}
-            aria-pressed={code === lang}
-            onClick={() => setLang(code)}
+    <header className="topbar">
+      <Link href="/" className="brand" aria-label={t.nav_home}>
+        <Image src="/logo.webp" alt="" width={28} height={28} priority />
+        <span className="brand-word">BODYRANK</span>
+      </Link>
+
+      <div className="topbar-right">
+        <nav className="topnav" aria-label={t.nav_label}>
+          <Link
+            href={STRENGTH_CALCULATOR_PATH}
+            aria-current={pathname === STRENGTH_CALCULATOR_PATH ? "page" : undefined}
           >
-            {label}
-          </button>
-        ))}
+            {t.nav_calculator}
+          </Link>
+        </nav>
+
+        <div className="langtoggle" role="group" aria-label="Language">
+          {LANGS.map(({ code, label }) => (
+            <button
+              key={code}
+              type="button"
+              className={code === lang ? "active" : ""}
+              aria-pressed={code === lang}
+              onClick={() => setLang(code)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
+    </header>
   );
 }

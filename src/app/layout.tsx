@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Anton, Sora, IBM_Plex_Mono } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "@/styles/globals.css";
 
 const anton = Anton({
@@ -25,14 +26,25 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BodyRank — Scan. Rank. Transform.",
-  description:
-    "The AI body scan that rates your physique across 7 metrics, ranks you Iron to Symmetric, and builds your training plan around what it finds.",
+  metadataBase: new URL(SITE_URL),
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  // No hreflang yet: Spanish is a client-side toggle on the same URL, so there
+  // is no separate /es page for search engines to index.
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "BodyRank — Scan. Rank. Transform.",
-    description:
-      "The AI body scan that rates your physique across 7 metrics, ranks you Iron to Symmetric, and builds your training plan around what it finds.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
 };
 

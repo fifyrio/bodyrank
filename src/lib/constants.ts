@@ -6,14 +6,14 @@ export interface Tier {
   colorVar: string;
 }
 
-// Six-tier rank ladder, Iron to Symmetric.
+// Six-tier rank ladder, Iron to Aesthetic.
 export const TIERS: Tier[] = [
   { name: "IRON", tag: "TIER 1", colorVar: "var(--iron)" },
   { name: "BRONZE", tag: "TIER 2", colorVar: "var(--bronze)" },
   { name: "SILVER", tag: "TIER 3", colorVar: "var(--silver)" },
   { name: "GOLD", tag: "TIER 4", colorVar: "var(--gold)" },
   { name: "PLATINUM", tag: "TIER 5", colorVar: "var(--platinum)" },
-  { name: "SYMMETRIC", tag: "TIER 6 · TOP 1%", colorVar: "var(--cyan)" },
+  { name: "AESTHETIC", tag: "TIER 6 · TOP 1%", colorVar: "var(--cyan)" },
 ];
 
 // The 7 physique metrics scored on every scan.

@@ -42,6 +42,10 @@ export interface Strings {
   footer_desc: string;
   footer_note: string;
   footer_links: string;
+  nav_home: string;
+  nav_label: string;
+  nav_calculator: string;
+  footer_calc_link: string;
 }
 
 export const STRINGS: Record<Lang, Strings> = {
@@ -52,7 +56,7 @@ export const STRINGS: Record<Lang, Strings> = {
     "headline_pre": "SCAN. ",
     "headline_accent": "RANK.",
     "headline_post": " TRANSFORM.",
-    "sub": "The AI body scan that rates your physique across 7 metrics, ranks you Iron to Symmetric, and builds your training plan around what it finds.",
+    "sub": "The AI body scan that rates your physique across 7 metrics, ranks you on the six-tier BodyRank ladder, and builds your training plan around what it finds.",
     "placeholder": "you@email.com",
     "cta": "Get Early Access",
     "note": "First 500 scans are free when we launch. One email, no spam, unsubscribe anytime.",
@@ -99,7 +103,7 @@ export const STRINGS: Record<Lang, Strings> = {
       {
         "num": "02",
         "title": "RANK",
-        "desc": "Get placed on a real ladder, Iron to Symmetric, against people who scanned like you did."
+        "desc": "Get your BodyRank — a place on a real six-tier ladder, against people who scanned like you did."
       },
       {
         "num": "03",
@@ -108,7 +112,7 @@ export const STRINGS: Record<Lang, Strings> = {
       }
     ],
     "ladder_tag": "THE LADDER",
-    "ladder_title": "Iron to Symmetric",
+    "ladder_title": "The BodyRank ladder",
     "ladder_desc": "Six tiers. Your first scan places you — no guessing.",
     "you_label": "YOUR RANK",
     "you_value": "???",
@@ -118,7 +122,11 @@ export const STRINGS: Record<Lang, Strings> = {
     "footer_title": "BE FIRST TO SCAN",
     "footer_desc": "BodyRank is in active development. Join the waitlist and we’ll email you the day it opens.",
     "footer_note": "No fake numbers here — the counter above only moves when a real person joins.",
-    "footer_links": "BODYRANK · BUILT FOR EN + ES"
+    "footer_links": "BODYRANK · BUILT FOR EN + ES",
+    "nav_home": "BodyRank home",
+    "nav_label": "Main navigation",
+    "nav_calculator": "Strength test",
+    "footer_calc_link": "How strong are you? Try the free strength calculator →"
   },
   "es": {
     "htmllang": "es",
@@ -127,7 +135,7 @@ export const STRINGS: Record<Lang, Strings> = {
     "headline_pre": "ESCANEA. ",
     "headline_accent": "CLASIFICA.",
     "headline_post": " TRANSFÓRMATE.",
-    "sub": "El escáner corporal con IA que califica tu físico en 7 métricas, te ubica de Iron a Symmetric y arma tu plan de entrenamiento con lo que encuentra.",
+    "sub": "El escáner corporal con IA que califica tu físico en 7 métricas, te ubica en la escalera de seis niveles de BodyRank y arma tu plan de entrenamiento con lo que encuentra.",
     "placeholder": "tu@correo.com",
     "cta": "Consigue acceso anticipado",
     "note": "Los primeros 500 escáneos serán gratis al lanzar. Un solo correo, sin spam, cancela cuando quieras.",
@@ -174,7 +182,7 @@ export const STRINGS: Record<Lang, Strings> = {
       {
         "num": "02",
         "title": "CLASIFICA",
-        "desc": "Te ubicamos en una escalera real, de Iron a Symmetric, junto a personas que se escanearon como tú."
+        "desc": "Obtén tu BodyRank: un lugar en una escalera real de seis niveles, junto a personas que se escanearon como tú."
       },
       {
         "num": "03",
@@ -183,7 +191,7 @@ export const STRINGS: Record<Lang, Strings> = {
       }
     ],
     "ladder_tag": "LA ESCALERA",
-    "ladder_title": "De Iron a Symmetric",
+    "ladder_title": "La escalera BodyRank",
     "ladder_desc": "Seis niveles. Tu primer escáner te ubica — sin adivinar.",
     "you_label": "TU RANGO",
     "you_value": "???",
@@ -193,6 +201,10 @@ export const STRINGS: Record<Lang, Strings> = {
     "footer_title": "SÉ EL PRIMERO EN ESCANEARTE",
     "footer_desc": "BodyRank está en desarrollo activo. Únete a la lista y te avisamos el día que abra.",
     "footer_note": "Nada de números falsos aquí — el contador de arriba solo avanza cuando alguien real se une.",
-    "footer_links": "BODYRANK · HECHO PARA EN + ES"
+    "footer_links": "BODYRANK · HECHO PARA EN + ES",
+    "nav_home": "Inicio de BodyRank",
+    "nav_label": "Navegación principal",
+    "nav_calculator": "Test de fuerza",
+    "footer_calc_link": "¿Qué tan fuerte eres? Prueba la calculadora de fuerza gratis →"
   }
 };

@@ -28,11 +28,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Keep <html lang> and document title in sync with the active language.
+  // Keep <html lang> in sync with the active language. Page titles are
+  // per-route, so each page syncs its own via <LocalizedTitle>.
   useEffect(() => {
-    const dict = STRINGS[lang];
-    document.documentElement.lang = dict.htmllang;
-    document.title = dict.title;
+    document.documentElement.lang = STRINGS[lang].htmllang;
   }, [lang]);
 
   const setLang = useCallback((next: Lang) => {

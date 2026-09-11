@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { STRENGTH_CALCULATOR_PATH } from "@/lib/site";
 import { WaitlistForm } from "./WaitlistForm";
 
 export function FooterCta() {
@@ -15,6 +17,9 @@ export function FooterCta() {
 
       <WaitlistForm />
 
+      <p className="footer-calc">
+        <Link href={STRENGTH_CALCULATOR_PATH}>{t.footer_calc_link}</Link>
+      </p>
       <p className="footer-note">{t.footer_note}</p>
       <p className="footer-links">{t.footer_links}</p>
     </section>
