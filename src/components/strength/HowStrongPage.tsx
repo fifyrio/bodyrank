@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
+import { localizePath } from "@/lib/locale";
 import type { Unit } from "@/lib/strength/model";
 import { AppCta } from "./AppCta";
 import { StandardsTable } from "./StandardsTable";
@@ -11,8 +13,10 @@ import { useStrengthStrings } from "./useStrengthStrings";
 
 export function HowStrongPage() {
   const s = useStrengthStrings();
+  const { lang } = useLanguage();
   // Shared so the standards table follows the calculator's unit toggle.
-  const [unit, setUnit] = useState<Unit>("lb");
+  // Spanish-speaking markets lift in kilograms.
+  const [unit, setUnit] = useState<Unit>(lang === "es" ? "kg" : "lb");
 
   return (
     <>
@@ -33,7 +37,7 @@ export function HowStrongPage() {
       </main>
 
       <footer className="sc-footer">
-        <Link href="/">{s.footer_back}</Link>
+        <Link href={localizePath("/", lang)}>{s.footer_back}</Link>
         <p>{s.footer_line}</p>
       </footer>
     </>

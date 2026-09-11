@@ -1,48 +1,19 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useMemo } from "react";
 import { STRINGS, type Lang, type Strings } from "@/lib/i18n";
 
 interface LanguageValue {
   lang: Lang;
   t: Strings;
-  setLang: (lang: Lang) => void;
 }
 
 const LanguageContext = createContext<LanguageValue | null>(null);
 
-const STORAGE_KEY = "br-lang";
-
-function isLang(value: string | null): value is Lang {
-  return value === "en" || value === "es";
-}
-
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
-
-  // Restore a previously chosen language on mount.
-  useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (isLang(stored)) {
-      setLangState(stored);
-    }
-  }, []);
-
-  // Keep <html lang> in sync with the active language. Page titles are
-  // per-route, so each page syncs its own via <LocalizedTitle>.
-  useEffect(() => {
-    document.documentElement.lang = STRINGS[lang].htmllang;
-  }, [lang]);
-
-  const setLang = useCallback((next: Lang) => {
-    setLangState(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
-  }, []);
-
-  const value = useMemo<LanguageValue>(
-    () => ({ lang, t: STRINGS[lang], setLang }),
-    [lang, setLang],
-  );
+// The language comes from the URL (/ vs /es), resolved by the root layout on
+// the server, so SSR output and hydration always agree.
+export function LanguageProvider({ lang, children }: { lang: Lang; children: React.ReactNode }) {
+  const value = useMemo<LanguageValue>(() => ({ lang, t: STRINGS[lang] }), [lang]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { SectionHead } from "@/components/SectionHead";
-import { roundWeight } from "@/lib/strength/format";
+import { useLanguage } from "@/context/LanguageContext";
+import { formatNumber, roundWeight } from "@/lib/strength/format";
 import { LIFTS, oneRepMaxForZ, toKg, type Sex, type Unit } from "@/lib/strength/model";
 import { useStrengthStrings } from "./useStrengthStrings";
 
@@ -24,6 +25,7 @@ const STRONG_Z = 0.8416; // 80th percentile
 
 export function StandardsTable({ unit }: { unit: Unit }) {
   const s = useStrengthStrings();
+  const { lang } = useLanguage();
 
   return (
     <section className="wrap sc-section">
@@ -51,10 +53,13 @@ export function StandardsTable({ unit }: { unit: Unit }) {
                   const bodyweightKg = toKg(bodyweight, unit);
                   return (
                     <tr key={bodyweight}>
-                      <th scope="row">{bodyweight}</th>
+                      <th scope="row">{formatNumber(bodyweight, lang)}</th>
                       {LIFTS.map((lift) => {
                         const at = (z: number) =>
-                          roundWeight(oneRepMaxForZ(sex, lift, z, bodyweightKg, REFERENCE_AGE), unit, "plate");
+                          formatNumber(
+                            roundWeight(oneRepMaxForZ(sex, lift, z, bodyweightKg, REFERENCE_AGE), unit, "plate"),
+                            lang,
+                          );
                         return (
                           <td key={lift}>
                             <b>{at(AVERAGE_Z)}</b>

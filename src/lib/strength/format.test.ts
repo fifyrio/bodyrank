@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   convertWeight,
   fill,
+  formatNumber,
   formatWeight,
   parseNumber,
   roundWeight,
@@ -41,6 +42,14 @@ test("roundWeight supports exact, nearest-plate and plate-up rounding", () => {
   assert.equal(roundWeight(kg, "lb", "plate-up"), 255);
   assert.equal(roundWeight(101, "kg", "plate-up"), 102.5);
   assert.equal(formatWeight(100, "kg"), "100 kg");
+});
+
+test("formatNumber and formatWeight follow the page language", () => {
+  assert.equal(formatNumber(1005, "en"), "1,005");
+  assert.equal(formatNumber(112.5, "en"), "112.5");
+  assert.equal(formatNumber(112.5, "es"), "112,5");
+  assert.equal(formatWeight(112.5, "kg", "exact", "es"), "113 kg");
+  assert.equal(formatWeight(112, "kg", "plate-up", "es"), "112,5 kg");
 });
 
 test("strongerThan and topPercent stay within 1–99 and sum to 100", () => {

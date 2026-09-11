@@ -1,4 +1,12 @@
+import type { Lang } from "../i18n";
 import { fromKg, toKg, type Unit } from "./model.ts";
+
+const NUMBER_LOCALE: Record<Lang, string> = { en: "en-US", es: "es-ES" };
+
+// Locale-aware number, e.g. 112.5 → "112,5" in Spanish.
+export function formatNumber(value: number, lang: Lang = "en"): string {
+  return value.toLocaleString(NUMBER_LOCALE[lang], { maximumFractionDigits: 1 });
+}
 
 // Blank → null (field skipped); anything unparseable → NaN (field invalid).
 // Accepts "1,005" / "1,005.5" (US thousands) and "102,5" (decimal comma).
@@ -38,8 +46,13 @@ export function roundWeight(kg: number, unit: Unit, rounding: WeightRounding = "
   return Math.round(value);
 }
 
-export function formatWeight(kg: number, unit: Unit, rounding: WeightRounding = "exact"): string {
-  return `${roundWeight(kg, unit, rounding)} ${unit}`;
+export function formatWeight(
+  kg: number,
+  unit: Unit,
+  rounding: WeightRounding = "exact",
+  lang: Lang = "en",
+): string {
+  return `${formatNumber(roundWeight(kg, unit, rounding), lang)} ${unit}`;
 }
 
 // "Stronger than N%" — kept within 1–99 so the copy never claims 0% or 100%.

@@ -11,6 +11,7 @@ export interface FaqItem {
 
 export interface StrengthStrings {
   title: string;
+  meta_description: string;
   eyebrow: string;
   h1_accent: string;
   h1_rest: string;
@@ -74,6 +75,8 @@ export interface StrengthStrings {
 export const STRENGTH_STRINGS: Record<Lang, StrengthStrings> = {
   en: {
     title: "How Strong Am I? — BodyRank Free Strength Calculator",
+    meta_description:
+      "Free “how strong am I” test. Enter your bench, squat and deadlift to see your strength percentile for your age, sex and bodyweight — and your BodyRank tier.",
     eyebrow: "FREE STRENGTH TEST · 60 SECONDS · NO SIGNUP",
     h1_accent: "How strong am I?",
     h1_rest: " Take the test",
@@ -168,6 +171,8 @@ export const STRENGTH_STRINGS: Record<Lang, StrengthStrings> = {
   },
   es: {
     title: "¿Qué tan fuerte soy? — Calculadora de fuerza gratis de BodyRank",
+    meta_description:
+      "Test gratis “¿qué tan fuerte soy?”. Ingresa tu press de banca, sentadilla y peso muerto y descubre tu percentil de fuerza según tu edad, sexo y peso corporal — y tu nivel BodyRank.",
     eyebrow: "TEST DE FUERZA GRATIS · 60 SEGUNDOS · SIN REGISTRO",
     h1_accent: "¿Qué tan fuerte soy?",
     h1_rest: " Haz el test",

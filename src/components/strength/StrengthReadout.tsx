@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, type CSSProperties, type Ref } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import { TIERS } from "@/lib/constants";
-import { SITE_URL, STRENGTH_CALCULATOR_PATH } from "@/lib/site";
+import { localizePath } from "@/lib/locale";
+import { STRENGTH_CALCULATOR_PATH, absoluteUrl } from "@/lib/site";
 import type { LiftResult, Sex, StrengthResult, Unit } from "@/lib/strength/model";
 import { fill, formatWeight, strongerThan, topPercent } from "@/lib/strength/format";
 import { useStrengthStrings } from "./useStrengthStrings";
@@ -107,6 +109,7 @@ function ResultBody({ scored, unit, summary }: ResultBodyProps) {
 
 function LiftRow({ lift, unit }: { lift: LiftResult; unit: Unit }) {
   const s = useStrengthStrings();
+  const { lang } = useLanguage();
   const style: ReadoutStyle = {
     "--p": lift.percentile / 100,
     "--tier-color": TIERS[lift.tierIndex].colorVar,
@@ -114,7 +117,7 @@ function LiftRow({ lift, unit }: { lift: LiftResult; unit: Unit }) {
   const next = lift.nextTier
     ? fill(s.lift_next, {
         tier: TIERS[lift.nextTier.tierIndex].name,
-        weight: formatWeight(lift.nextTier.oneRepMaxKg, unit, "plate-up"),
+        weight: formatWeight(lift.nextTier.oneRepMaxKg, unit, "plate-up", lang),
       })
     : s.lift_maxed;
 
@@ -128,7 +131,7 @@ function LiftRow({ lift, unit }: { lift: LiftResult; unit: Unit }) {
         <div className="sc-bar-fill" />
       </div>
       <p className="sc-liftres-meta">
-        {fill(s.lift_1rm, { weight: formatWeight(lift.oneRepMaxKg, unit) })}
+        {fill(s.lift_1rm, { weight: formatWeight(lift.oneRepMaxKg, unit, "exact", lang) })}
         <span aria-hidden="true"> · </span>
         <span className="sc-liftres-next">{next}</span>
       </p>
@@ -162,8 +165,9 @@ type ShareStatus = "idle" | "copied" | "failed";
 
 function ShareButton({ text }: { text: string }) {
   const s = useStrengthStrings();
+  const { lang } = useLanguage();
   const [status, setStatus] = useState<ShareStatus>("idle");
-  const url = `${SITE_URL}${STRENGTH_CALCULATOR_PATH}`;
+  const url = absoluteUrl(localizePath(STRENGTH_CALCULATOR_PATH, lang));
 
   async function handleShare() {
     if (typeof navigator.share === "function") {
