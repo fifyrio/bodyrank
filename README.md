@@ -30,7 +30,13 @@ pnpm build && pnpm start   # production
 
 ## Domain & SEO
 
-Production domain: **[bodyrank.net](https://bodyrank.net)**.
+Production domain: **[bodyrank.net](https://bodyrank.net)** — the apex, without `www`.
+
+Canonical URLs, `sitemap.xml` and `robots.txt` all use the apex, and internal links
+are relative, so nothing in the app emits a `www` URL. If `www.bodyrank.net` also
+resolves, configure a **301 from `www` to the apex in your host/DNS** — otherwise
+both hostnames serve the same pages and split their ranking signals. Use the same
+apex property in Google Search Console.
 
 The canonical URL lives in `src/lib/site.ts` and feeds `metadataBase`, Open Graph /
 Twitter tags, `sitemap.xml`, and `robots.txt`. Override per-environment (preview /

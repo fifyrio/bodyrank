@@ -50,7 +50,14 @@ export function AppCta() {
           <div className="phone">
             <div className="phone-notch" />
             <div className="phone-screen">
-              <Image src="/app/screen-1.webp" alt="" fill sizes="220px" />
+              {/* Explicit dimensions so the frame reserves its space before load. */}
+              <Image
+                src="/app/screen-1.webp"
+                alt=""
+                width={1179}
+                height={2556}
+                sizes="(max-width: 760px) 200px, 230px"
+              />
             </div>
           </div>
         </div>

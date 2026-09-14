@@ -139,31 +139,39 @@ export const STRENGTH_STRINGS: Record<Lang, StrengthStrings> = {
     faq: [
       {
         q: "How does the “How strong am I?” test work?",
-        a: "Enter your best bench press, squat and deadlift — a true one-rep max, or any set of up to 12 reps, which we convert to an estimated max with the Epley formula. We adjust for age, scale for bodyweight (strength grows more slowly than size, so heavier lifters are compared fairly), and compare the result with strength standards for people who train. Your overall score averages every lift you entered, then maps onto the six-tier BodyRank ladder.",
+        a: "Enter your best bench press, squat and deadlift — a true one-rep max, or any set of up to 12 reps, which we convert to an estimated max with the Epley formula. We adjust for age, scale for bodyweight (strength grows more slowly than size, so heavier lifters are compared fairly), and compare the result with strength standards for people who train. Your overall score averages every lift you entered, then maps onto the six-tier BodyRank ladder. You can enter one lift or all three — the overall rank averages whatever you give us. A percentile of 70 means you would out-lift 70 of every 100 people who train at your sex, age and bodyweight.",
       },
       {
         q: "How strong should I be?",
-        a: "A useful benchmark is the median lifter — someone with a year or two of consistent training. For men that is roughly a bodyweight bench press, a 1.45× bodyweight squat and a 1.85× bodyweight deadlift. For women it is roughly 0.7× bodyweight on the bench, 1.1× on the squat and 1.35× on the deadlift. Hit those and you are stronger than half the people who lift; the top 20% move about 30–40% more.",
+        a: "A useful benchmark is the median lifter — someone with a year or two of consistent training. For men that is roughly a bodyweight bench press, a 1.45× bodyweight squat and a 1.85× bodyweight deadlift. For women it is roughly 0.7× bodyweight on the bench, 1.1× on the squat and 1.35× on the deadlift. Hit those and you are stronger than half the people who lift; the top 20% move about 30–40% more. Most people reach the median within one to two years of consistent training, and the first year is by far the fastest. After that, progress is measured in months rather than weeks, which is why percentiles move slowly once you are past the middle of the pack.",
       },
       {
         q: "How strong am I for my age?",
-        a: "Strength peaks between about 23 and 40, so the calculator credits lifters outside that window. A 50-year-old’s lifts are scored as if they were about 13% heavier, a 60-year-old’s about 32% heavier, and teenagers get a similar boost. So a 165 lb bench press at age 50 ranks about the same as a 185 lb bench press at 30.",
+        a: "Strength peaks between about 23 and 40, so the calculator credits lifters outside that window. A 50-year-old’s lifts are scored as if they were about 13% heavier, a 60-year-old’s about 32% heavier, and teenagers get a similar boost. So a 165 lb bench press at age 50 ranks about the same as a 185 lb bench press at 30. Strength peaks when muscle mass and recovery peak, and both decline slowly after 40 unless you keep training — a 55-year-old who still trains hard will out-lift most untrained 25-year-olds. Under 20 the adjustment is smaller, because most of the gap at that age is training experience rather than biology.",
       },
       {
         q: "What’s a good bench press for my age and weight?",
-        a: "For a 180 lb man in his 20s or 30s, an average bench press is about 185 lb and a strong one — top 20% of lifters — is about 260 lb. For a 140 lb woman, average is about 95 lb and strong is about 130 lb. At 50, take roughly 12% off those numbers. The standards table lists averages for every bodyweight, and the calculator gives your exact percentile.",
+        a: "For a 180 lb man in his 20s or 30s, an average bench press is about 185 lb and a strong one — top 20% of lifters — is about 260 lb. For a 140 lb woman, average is about 95 lb and strong is about 130 lb. At 50, take roughly 12% off those numbers. The standards table lists averages for every bodyweight, and the calculator gives your exact percentile. A 150 lb man averages about 165 lb on the bench, and 230 lb puts him in the top 20%. The numbers rise with bodyweight but not proportionally: a lifter 40% heavier is typically only about 25% stronger, which is why the calculator scales for size instead of using a flat bodyweight multiple.",
       },
       {
         q: "Am I compared with everyone, or just people who lift?",
-        a: "Just people who lift. The standards come from lifters who train and track their numbers, which is a much tougher crowd than the general population. If you land in Bronze here, you are still stronger than most people who never train.",
+        a: "Just people who lift. The standards come from lifters who train and track their numbers, which is a much tougher crowd than the general population. If you land in Bronze here, you are still stronger than most people who never train. Measured against the general population the same lifts would rank far higher — most untrained adults cannot bench their own bodyweight at all. Treat the percentile here as the conservative number.",
       },
       {
         q: "What if I don’t know my one-rep max?",
-        a: "You don’t need to test one. Enter the heaviest set you have done recently — say 185 lb for 5 reps — and the calculator estimates your max (about 215 lb in that case). Estimates are most accurate between 1 and 10 reps, and sets above 12 reps aren’t accepted.",
+        a: "You don’t need to test one. Enter the heaviest set you have done recently — say 185 lb for 5 reps — and the calculator estimates your max (about 215 lb in that case). Estimates are most accurate between 1 and 10 reps, and sets above 12 reps aren’t accepted. Sets of three to five reps give the closest estimate; the further past five you go, the more you are measuring endurance rather than pure strength. If you have never tested a one-rep max, don’t start now just to use this page — enter a recent hard set instead, and keep a spotter on any heavy bench press.",
       },
       {
         q: "What’s the difference between this calculator and the BodyRank app?",
-        a: "The calculator measures what you lift. The BodyRank app measures how you look: take one photo and its AI scores seven physique metrics — muscle mass, symmetry, definition, body fat, V-taper, potential and an overall score — then gives you a BodyRank rank and builds a training plan around your weak points.",
+        a: "The calculator measures what you lift. The BodyRank app measures how you look: take one photo and its AI scores seven physique metrics — muscle mass, symmetry, definition, body fat, V-taper, potential and an overall score — then gives you a BodyRank rank and builds a training plan around your weak points. The calculator is anonymous and needs no signup; the app needs a photo. They measure different things — you can be strong without looking it, or look lean and lift very little. Most people run the calculator first and scan when they want the other half of the picture.",
+      },
+      {
+        q: "Do these standards assume raw lifts?",
+        a: "Yes. They assume raw lifting — no bench shirts, squat suits or straps — through a full range of motion: a squat to at least parallel, a bench press touching the chest, and a deadlift locked out at the top. A belt, knee sleeves and chalk are normal and aren’t counted as equipment. If you enter half-squats or bounced bench presses, your percentile will read higher than it should.",
+      },
+      {
+        q: "How do I improve my strength rank?",
+        a: "Add weight or reps to the same lifts over time — that progression is what builds strength, not variety. Two or three sessions a week covering the bench press, squat and deadlift is enough for most people, with enough protein and sleep to recover in between. Retest after eight to twelve weeks; strength moves slowly enough that a monthly retest mostly measures noise. Climbing a full tier usually takes 30–40% more weight, so treat it as a project of months rather than weeks.",
       },
     ],
     footer_back: "← Back to BodyRank",
@@ -235,31 +243,39 @@ export const STRENGTH_STRINGS: Record<Lang, StrengthStrings> = {
     faq: [
       {
         q: "¿Cómo funciona el test “¿Qué tan fuerte soy?”?",
-        a: "Ingresa tu mejor press de banca, sentadilla y peso muerto — un 1RM real, o cualquier serie de hasta 12 repeticiones, que convertimos en un máximo estimado con la fórmula de Epley. Ajustamos por edad, escalamos por peso corporal (la fuerza crece más despacio que el tamaño, así que las personas más pesadas se comparan de forma justa) y comparamos el resultado con estándares de fuerza de personas que entrenan. Tu puntuación general promedia todos los levantamientos que ingresaste y se ubica en la escalera de seis niveles de BodyRank.",
+        a: "Ingresa tu mejor press de banca, sentadilla y peso muerto — un 1RM real, o cualquier serie de hasta 12 repeticiones, que convertimos en un máximo estimado con la fórmula de Epley. Ajustamos por edad, escalamos por peso corporal (la fuerza crece más despacio que el tamaño, así que las personas más pesadas se comparan de forma justa) y comparamos el resultado con estándares de fuerza de personas que entrenan. Tu puntuación general promedia todos los levantamientos que ingresaste y se ubica en la escalera de seis niveles de BodyRank. Puedes ingresar un solo levantamiento o los tres: el rango general promedia lo que nos des. Un percentil de 70 significa que levantarías más que 70 de cada 100 personas que entrenan de tu sexo, edad y peso corporal.",
       },
       {
         q: "¿Qué tan fuerte debería ser?",
-        a: "Una buena referencia es la persona promedio que entrena — alguien con uno o dos años de entrenamiento constante. Para hombres, eso es aproximadamente su peso corporal en press de banca, 1,45× en sentadilla y 1,85× en peso muerto. Para mujeres, aproximadamente 0,7× su peso en banca, 1,1× en sentadilla y 1,35× en peso muerto. Si llegas a eso, eres más fuerte que la mitad de quienes entrenan; el 20% superior levanta alrededor de un 30–40% más.",
+        a: "Una buena referencia es la persona promedio que entrena — alguien con uno o dos años de entrenamiento constante. Para hombres, eso es aproximadamente su peso corporal en press de banca, 1,45× en sentadilla y 1,85× en peso muerto. Para mujeres, aproximadamente 0,7× su peso en banca, 1,1× en sentadilla y 1,35× en peso muerto. Si llegas a eso, eres más fuerte que la mitad de quienes entrenan; el 20% superior levanta alrededor de un 30–40% más. La mayoría llega al promedio en uno o dos años de entrenamiento constante, y el primer año es con diferencia el más rápido. Después, el progreso se mide en meses y no en semanas, por eso los percentiles se mueven despacio una vez que pasas la mitad de la tabla.",
       },
       {
         q: "¿Qué tan fuerte soy para mi edad?",
-        a: "La fuerza alcanza su punto máximo entre los 23 y los 40 años, así que la calculadora da crédito a quienes están fuera de ese rango. Los levantamientos de alguien de 50 años se puntúan como si fueran un 13% más pesados, los de alguien de 60 un 32% más, y los adolescentes reciben un ajuste similar. Así, un press de banca de 75 kg a los 50 años equivale aproximadamente a uno de 85 kg a los 30.",
+        a: "La fuerza alcanza su punto máximo entre los 23 y los 40 años, así que la calculadora da crédito a quienes están fuera de ese rango. Los levantamientos de alguien de 50 años se puntúan como si fueran un 13% más pesados, los de alguien de 60 un 32% más, y los adolescentes reciben un ajuste similar. Así, un press de banca de 75 kg a los 50 años equivale aproximadamente a uno de 85 kg a los 30. La fuerza llega a su máximo cuando la masa muscular y la recuperación están en su mejor momento, y ambas bajan lentamente a partir de los 40 si dejas de entrenar: alguien de 55 años que entrena en serio levanta más que la mayoría de los jóvenes de 25 que no entrenan. Antes de los 20 el ajuste es menor, porque a esa edad la diferencia es sobre todo experiencia de entrenamiento y no biología.",
       },
       {
         q: "¿Qué es un buen press de banca para mi edad y peso?",
-        a: "Para un hombre de 82 kg de entre 20 y 40 años, un press de banca promedio ronda los 85 kg y uno fuerte — el 20% superior — unos 118 kg. Para una mujer de 64 kg, el promedio ronda los 44 kg y uno fuerte unos 60 kg. A los 50 años, resta aproximadamente un 12% a esas cifras. La tabla de estándares muestra el promedio para cada peso corporal y la calculadora te da tu percentil exacto.",
+        a: "Para un hombre de 82 kg de entre 20 y 40 años, un press de banca promedio ronda los 85 kg y uno fuerte — el 20% superior — unos 118 kg. Para una mujer de 64 kg, el promedio ronda los 44 kg y uno fuerte unos 60 kg. A los 50 años, resta aproximadamente un 12% a esas cifras. La tabla de estándares muestra el promedio para cada peso corporal y la calculadora te da tu percentil exacto. Un hombre de 67,5 kg promedia unos 75 kg en banca, y con 102,5 kg entra en el 20% superior. Los números suben con el peso corporal, pero no de forma proporcional: alguien un 40% más pesado suele ser solo un 25% más fuerte, por eso la calculadora ajusta por tamaño en vez de usar un múltiplo fijo del peso.",
       },
       {
         q: "¿Me comparan con todo el mundo o solo con quienes entrenan?",
-        a: "Solo con quienes entrenan. Los estándares vienen de personas que entrenan y registran sus números, un grupo mucho más exigente que la población general. Si quedas en Bronze aquí, igual eres más fuerte que la mayoría de las personas que no entrenan.",
+        a: "Solo con quienes entrenan. Los estándares vienen de personas que entrenan y registran sus números, un grupo mucho más exigente que la población general. Si quedas en Bronze aquí, igual eres más fuerte que la mayoría de las personas que no entrenan. Frente a la población general los mismos levantamientos quedarían mucho más arriba: la mayoría de los adultos que no entrenan no puede levantar su propio peso corporal en banca. Toma tu percentil aquí como el número conservador.",
       },
       {
         q: "¿Y si no conozco mi 1RM?",
-        a: "No necesitas probarlo. Ingresa la serie más pesada que hayas hecho últimamente — por ejemplo, 85 kg por 5 repeticiones — y la calculadora estima tu máximo (unos 99 kg en ese caso). Las estimaciones son más precisas entre 1 y 10 repeticiones, y no se aceptan series de más de 12.",
+        a: "No necesitas probarlo. Ingresa la serie más pesada que hayas hecho últimamente — por ejemplo, 85 kg por 5 repeticiones — y la calculadora estima tu máximo (unos 99 kg en ese caso). Las estimaciones son más precisas entre 1 y 10 repeticiones, y no se aceptan series de más de 12. Las series de tres a cinco repeticiones dan la estimación más cercana; cuanto más te alejas de cinco, más estás midiendo resistencia que fuerza pura. Si nunca has probado un máximo, no empieces ahora solo para usar esta página: ingresa una serie exigente reciente y ten siempre a alguien que te cuide en el press de banca pesado.",
       },
       {
         q: "¿Cuál es la diferencia entre esta calculadora y la app de BodyRank?",
-        a: "La calculadora mide lo que levantas. La app de BodyRank mide cómo te ves: tomas una foto y su IA puntúa siete métricas de tu físico — masa muscular, simetría, definición, grasa corporal, forma en V, potencial y una puntuación general —, te da tu rango BodyRank y arma un plan de entrenamiento alrededor de tus puntos débiles.",
+        a: "La calculadora mide lo que levantas. La app de BodyRank mide cómo te ves: tomas una foto y su IA puntúa siete métricas de tu físico — masa muscular, simetría, definición, grasa corporal, forma en V, potencial y una puntuación general —, te da tu rango BodyRank y arma un plan de entrenamiento alrededor de tus puntos débiles. La calculadora es anónima y no pide registro; la app necesita una foto. Miden cosas distintas: puedes ser fuerte sin aparentarlo, o verte definido y levantar poco. La mayoría empieza por la calculadora y se escanea cuando quiere la otra mitad del panorama.",
+      },
+      {
+        q: "¿Estos estándares son para levantamientos raw?",
+        a: "Sí. Asumen levantamiento raw —sin camiseta de banca, traje de sentadilla ni straps— y con rango completo de movimiento: sentadilla al menos hasta la paralela, press de banca tocando el pecho y peso muerto bloqueado arriba. El cinturón, las rodilleras y el magnesio son normales y no cuentan como equipamiento. Si ingresas medias sentadillas o rebotes en banca, tu percentil saldrá más alto de lo que debería.",
+      },
+      {
+        q: "¿Cómo subo de nivel?",
+        a: "Añade peso o repeticiones a los mismos levantamientos con el tiempo: esa progresión es lo que construye fuerza, no la variedad. Para la mayoría bastan dos o tres sesiones por semana que cubran press de banca, sentadilla y peso muerto, con suficiente proteína y descanso entre ellas. Vuelve a medirte a las ocho o doce semanas; la fuerza cambia tan despacio que medir cada mes es sobre todo ruido. Subir un nivel completo suele exigir entre un 30% y un 40% más de peso, así que cuenta con meses y no con semanas.",
       },
     ],
     footer_back: "← Volver a BodyRank",
